@@ -19,7 +19,7 @@ ENTITIES
 
 NON-ENTITIES
 	Rented_Records: Pri rid;Cid; 
-	Records: Pri Rid;Name;Artist;Satus;Cost 
+	Records: Pri Rid;Name;Artist;Stock;Cost 
 	Dates: Pri TID;AoR;ID;Rented_from;Return_Date
 
 
@@ -40,7 +40,7 @@ NON-ENTITIES
 	EMPOYEE		INT Auto increment		
 		Record Title: Name							VARCHAR
  		Record by: Artist							VARCHAR
-		Record Status:(Available/Rented): Status				VARCHAR					
+		Record Stock:Number of Records in store					VARCHAR					
 			
 
 	CUSTOMER:Customer ID:CID; PRIMARY KEY						INT AUTO INCREMENT
