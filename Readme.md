@@ -5,7 +5,9 @@
 ||Problem Statement: Make an application for the database of a music record store.
 
 
-||Database: RetroRecords \\Import commands.sql
+||Database: RetroRecords           
+	
+	Import commands.sql
 
 
 ||Tables:4 :
