@@ -1,3 +1,7 @@
+#Project to implement basic Database management system using python
+
+
+
 ||Problem Statement: Make an application for the database of a music record store.
 
 
@@ -68,10 +72,7 @@ NON-ENTITIES
 		          					R]Records
 		          					A]Albums
 			
-			3R] ViewRecords,BuyRecord,RentRecord,ReturnRecord				\\Not sure if we want to also buy Records
-			3A] ViewAlbums,BuyAlbums,RentAlbums,SellAlbums								\\Not sure if we want to also buy Albums
-					\\Implement Buy\Rent in View
-
+			3R] ViewRecords,BuyRecord,RentRecord,ReturnRecord
 
 
 
@@ -79,7 +80,7 @@ NON-ENTITIES
 
 		EDIT] 1]Edit RecordData
 		      2]Edit AlbumData
-		      3]New Employee 			\\Maybe also add condion that the employee adding another has to be allowed
+		      3]New Employee 
 
 
 
