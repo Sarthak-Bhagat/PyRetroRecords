@@ -34,7 +34,7 @@ NON-ENTITIES
 	EMPOYEE		INT Auto increment		
 		Record Title: Name							VARCHAR
  		Record by: Artist							VARCHAR
-		Record Status:(Available/Rented): Status				VARCHAR						INT
+		Record Status:(Available/Rented): Status				VARCHAR					
 			
 
 	CUSTOMER:Customer ID:CID; PRIMARY KEY						INT AUTO INCREMENT
@@ -48,7 +48,6 @@ NON-ENTITIES
 
 	EMPLOYEE:Employee ID:EID; PRIMARY KEY						INT AUTO INCREMENT
 		 Employee's Name: Name							VARCHAR
-		 Employee's Address:Address						VARCHAR ??
 		 Employee's Username:EUsr						VARCHAR	
 		 Employee's Password:Epas						VARCHAR
 	
