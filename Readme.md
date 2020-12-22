@@ -73,7 +73,8 @@ NON-ENTITIES
 		           	
 				Existing or New Customer
 		          
-			3R] ViewRecords,Return Record
+				ViewRecords
+				Return Record
 
 
 
