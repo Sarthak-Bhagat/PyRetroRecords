@@ -61,20 +61,22 @@ def Login():
 	try:
 		cur.execute( "select * from Customer where CUsr = \'"+UN+"\'")
 		arr.append(cur.fetchall())
+		arr = arr[0][0]
+		Username = arr[2]
+		Password = arr[3]
+		if UN == Username and PS == Password:
+			messagebox.showinfo(title='Welcome',message="Welcome "+arr[1])
+			root.destroy()
+			f = open("CID.txt", "w")
+			f.write(str(arr[0]))
+			f.close()
+			Record()
+		else:
+			messagebox.showerror(title='Error',message="Wrong Username or Password")
+
 	except:
 		messagebox.showerror(title='Error',message="Username not found")
-	arr = arr[0][0]
+	
 
-	Username = arr[2]
-	Password = arr[3]
 
-	if UN == Username and PS == Password:
-		messagebox.showinfo(title='Welcome',message="Welcome "+arr[1])
-		root.destroy()
-		f = open("CID.txt", "w")
-		f.write(str(arr[0]))
-		f.close()
-		Record()
-	else:
-		messagebox.showerror(title='Error',message="Wrong Username or Password")
-
+	

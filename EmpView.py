@@ -62,39 +62,24 @@ def openWind(RecordID):
 	StockLB = Label(labelFrame,  text="Stock:\t\t"+Stock,bg='black',fg='white')
 	StockLB.place(relx=0.07,rely=0.5)
 
-	RentBtn = Button(Canvas1,text="Rent",bg='#f7f1e3', fg='black', command=Rent_it)
+	RentBtn = Button(Canvas1,text="Stock",bg='#f7f1e3', fg='black', command=Stock_it)
 	RentBtn.place(relx=0.75,rely=0.9, relwidth=0.18,relheight=0.08)
 
 	BackBtn = Button(Canvas1,text="Back",bg='#f7f1e3', fg='black', command=rootA.destroy)
 	BackBtn.place(relx=0.15,rely=0.9, relwidth=0.18,relheight=0.08)
 
 	
-def Rent_it():
-	rent_it = "UPDATE Records SET Stock = Stock-1 WHERE RID = "+RID
-	cur.execute(rent_it)
+def Stock_it():
+	stock_it = "UPDATE Records SET Stock = Stock WHERE RID = "+RID
+	cur.execute(stock_it)
 	con.commit()
-	messagebox.showinfo(title='Success',message="Thank you for renting \n"+Name+"\n from us")
-	f = open("CID.txt", "r")
-	CID = f.readline()
-	one = '1'
-	check_it = "SELECT * FROM RENTED WHERE CID = '"+CID+"' AND RID = "+RID
-	cur.execute(check_it)
-	con.commit()
-	try:
-		a = cur.fetchall()[0]
-		update_it = "UPDATE RENTED SET NRENTED = NRENTED + 1 WHERE RID ="+RID
-		cur.execute(update_it)
-		con.commit()
-	except:
-		add_it = "INSERT INTO RENTED VALUES(\'"+RID+"\',\'"+CID+"\',\'"+one+"\')"
-		cur.execute(add_it)
-		con.commit()
 	root.destroy()
 	rootA.destroy()
-	ViewRecord()	
+	openWind(RID)	
+	EmpView()
 
 
-def ViewRecord(): 
+def EmpView(): 
 
 	global root
 	
@@ -151,7 +136,7 @@ def ViewRecord():
 	scrollbar.pack( side = RIGHT, fill = Y )
 
 	for i in range(len(arr[0])):
-		labels.append(str(arr[0][j][0])+'\t\t'+arr[0][j][1]) #Saving RID and Name to array RID               Name [RID,Name]
+		labels.append(str(arr[0][j][0])+'\t\t'+arr[0][j][1])
 
 		mylist = Listbox(labelFrame, yscrollcommand = scrollbar.set,bg = 'black',fg ='white')
 
@@ -172,3 +157,5 @@ def ViewRecord():
 	BackBtn.place(relx=0.4,rely=0.9, relwidth=0.18,relheight=0.08)
 	
 	root.mainloop()
+
+EmpView()

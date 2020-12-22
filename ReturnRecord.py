@@ -11,14 +11,24 @@ con = pymysql.connect(host="localhost",user=myusr,password=mypass,database=mydat
 cur = con.cursor()
 
 def Return(RecordID):
-	rent_it = "UPDATE Records SET status = 'Available' WHERE RID = "+RecordID
-	cur.execute(rent_it)
+	unrent_it = "UPDATE Records SET Stock = Stock + 1 WHERE RID = "+RecordID
+	cur.execute(unrent_it)
 	con.commit()
-	messagebox.showinfo(title='Success',message="Thank you for returning\nthe record disk safely")
-	rent_it = "DELETE FROM RENTED WHERE RID = "+RecordID
-	cur.execute(rent_it)
+	messagebox.showinfo(title='Success',message="Thank you for returning\nthe record disk safely")	
+	return_it = "UPDATE RENTED SET NRENTED = NRENTED - 1 WHERE RID = "+RecordID+" AND CID = "+CID
+	cur.execute(return_it)
 	con.commit()
+
+	check_it = "SELECT NRENTED FROM RENTED WHERE RID = "+RecordID+" AND CID = "+CID
+	cur.execute(check_it)
+	con.commit()
+	k = cur.fetchall()[0][0]
+	if k < 1:
+		delete_it = "DELETE FROM RENTED WHERE RID = "+RecordID+" AND CID = "+CID
+		cur.execute(delete_it)
+		con.commit()
 	root.destroy()
+	ReturnRecord()
 
 
 	
@@ -26,7 +36,7 @@ def Return(RecordID):
 
 def ReturnRecord(): 
 	
-	global root
+	global root,CID
 
 	root = Tk()
 	root.title("Retro Record Rental")
@@ -59,7 +69,7 @@ def ReturnRecord():
 	
 	
 	
-	Label(labelFrame, text="RID \t\t Title",bg='black',fg='white').place(relx=0.07,rely=0.1)
+	Label(labelFrame, text="RID \tN\t Title",bg='black',fg='white').place(relx=0.07,rely=0.1)
 
 
 	Label(labelFrame, text="---------------------------------------------------------------------------------",bg='black',fg='white').place(relx=0.05,rely=0.2)
@@ -70,17 +80,16 @@ def ReturnRecord():
 	try:
 		f = open("CID.txt", "r")
 		CID = f.readline()
-		cur.execute( "SELECT * FROM RENTED WHERE CID = "+str(CID))
+		cur.execute( "SELECT RID,NRENTED FROM RENTED WHERE CID = "+str(CID))
 		arr.append(cur.fetchall())
 	except:
 		messagebox.showerror(title='Error',message="Failed to fetch files from database")
-
 
 	for i in range(len(arr[0])):
 		a.append(arr[0][i][0])
 	try:
 		for i in range(len(a)):
-			cur.execute( "SELECT * FROM Records WHERE RID = "+str(a[i]))
+			cur.execute( "SELECT Name FROM Records WHERE RID = "+str(a[i]))
 			b.append(cur.fetchall())
 	except:
 		messagebox.showerror(title='Error',message="Failed to fetch files from database")
@@ -94,9 +103,11 @@ def ReturnRecord():
 	scrollbar = Scrollbar(labelFrame)
 	scrollbar.pack( side = RIGHT, fill = Y )
 
-	for i in range(len(b[0])):
-		labels.append(str(b[0][j][0])+'\t\t'+str(b[0][j][1]))
-
+	for i in range(len(b)):
+		title = str(b[i][0][0])
+		n = str(arr[0][i][1])
+		rid = str(a[i])
+		labels.append(rid+" \t"+n+"\t "+title)
 		mylist = Listbox(labelFrame, yscrollcommand = scrollbar.set,bg = 'black',fg ='white')
 
 		Outputlb = Label(labelFrame, text=labels[i],bg='black',fg='white')
@@ -106,7 +117,7 @@ def ReturnRecord():
 
 	y = 0.25
 	
-	for i in range(len(b[0])):
+	for i in range(len(b)):
 		btn.append(Button(labelFrame, text='Return', command=lambda c=i: Return(labels[c].split()[0])))
 		btn[i].place(relx=0.75,rely=y,relwidth=0.2,relheight=0.1)
 		y += 0.1
