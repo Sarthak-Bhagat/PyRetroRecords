@@ -1,7 +1,7 @@
 ||Problem Statement: Make an application for the database of a music record store.
 
 
-||Database Name: RetroRecords -> Placholder: Proj_Test
+||Database: RetroRecords \\Import commands.sql
 
 
 ||Tables:4 :
@@ -34,34 +34,23 @@ NON-ENTITIES
 	EMPOYEE		INT Auto increment		
 		Record Title: Name							VARCHAR
  		Record by: Artist							VARCHAR
-		Record Status:(Available/Rented): Status	VARCHAR						INT
-				
+		Record Status:(Available/Rented): Status				VARCHAR						INT
+			
 
-		Record ID: RID								UNIQUE VARCHAR				\\\MAYBE 	#Nope no time, also no mood
-
-
-	CUSTOMER:Customer ID:CID; PRIMARY KEY			INT AUTO INCREMENT
-		 Customer's Name: Name						VARCHAR
-		 Customer's Address:Address;OPTIONAL		VARCHAR ??
+	CUSTOMER:Customer ID:CID; PRIMARY KEY						INT AUTO INCREMENT
+		 Customer's Name: Name							VARCHAR
 
 
 
-		 Customer's Username:CUsr;OPTIONAL			VARCHAR					
-		 Customer's Password:Cpas;OPTIONAL			VARCHAR
-
-    Dates 	:TID									INT AUTO INCREMENT
-    		 Album or Record:AoR 					BOOL
-    		 AID/RID:ID
-    		 CID
-    		 Rented_From 							TIMESTAMP
-    		 Return_Date							TIMESTAMP
+		 Customer's Username:CUsr;OPTIONAL					VARCHAR					
+		 Customer's Password:Cpas;OPTIONAL					VARCHAR
 
 
-	EMPLOYEE:Employee ID:EID; PRIMARY KEY			INT AUTO INCREMENT
-		 Employee's Name: Name						VARCHAR
-		 Employee's Address:Address					VARCHAR ??
-		 Employee's Username:EUsr					VARCHAR	
-		 Employee's Password:Epas					VARCHAR
+	EMPLOYEE:Employee ID:EID; PRIMARY KEY						INT AUTO INCREMENT
+		 Employee's Name: Name							VARCHAR
+		 Employee's Address:Address						VARCHAR ??
+		 Employee's Username:EUsr						VARCHAR	
+		 Employee's Password:Epas						VARCHAR
 	
 
 
