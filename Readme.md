@@ -61,24 +61,23 @@ NON-ENTITIES
 
 ||WINDOWS:
 
-	1]  LOGIN :	ARE YOU AN EMPLOYEE OR AN CUSTOMER?
-		E] EMPLOYEE ID AND PASSWORD
-	CUSTOMER] EXISTING OR NEW CUsr&CPas if EXISTING
+1]  LOGIN :	
+	
+			ARE YOU AN EMPLOYEE OR AN CUSTOMER?
+			E] EMPLOYEE ID AND PASSWORD
+		 CUSTOMER] EXISTING OR NEW CUsr&CPas if EXISTING
 
 
 
-	2C]  CUSTOMER:	Just main.py But remove AddRecords.py, also add SellRecord, SellAlbum, RentAlbum. 
-					Maybe add options for viewing Records or ALbums put other functions in their window.
-		        
-		           	So Window with "What are you looking for?"
-		          					R]Records
-		          					A]Albums
-			
-			3R] ViewRecords,BuyRecord,RentRecord,ReturnRecord
+2C]  CUSTOMER:	        
+		           	
+				Existing or New Customer
+		          
+			3R] ViewRecords,Return Record
 
 
 
-	2E]  EMPLOYEE: AddRecords, DeleteRecords, CreateAlbum, DeleteAlbum, AddEmployee, EDIT
+2E]  EMPLOYEE: AddRecords, DeleteRecords, CreateAlbum, DeleteAlbum, AddEmployee, EDIT
 
 		EDIT] 1]Edit RecordData
 		      2]Edit AlbumData
